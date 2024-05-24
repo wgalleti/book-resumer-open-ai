@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumo de Livros</title>
+</head>
+<body>
+    <h1>Gerar Resumo de Livros</h1>
+    <form method="post">
+        <label for="title">Título do Livro:</label>
+        <input type="text" id="title" name="title" required><br><br>
+        <label for="author">Autor do Livro (opcional):</label>
+        <input type="text" id="author" name="author"><br><br>
+        <button type="submit" name="text">Gerar Resumo</button>
+        <button type="submit" name="audio">Gerar Resumo em Áudio</button>
+    </form>
+
+    {% if summary %}
+        <h2>Resumo:</h2>
+        <p>{{ summary }}</p>
+    {% endif %}
+
+    {% if audio_url %}
+        <h2>Áudio do Resumo:</h2>
+        <audio controls>
+            <source src="{{ audio_url }}" type="audio/mpeg">
+            Seu navegador não suporta o elemento de áudio.
+        </audio>
+    {% endif %}
+
+    {% if error %}
+        <h2>Erro:</h2>
+        <p>{{ error }}</p>
+    {% endif %}
+</body>
+</html>
